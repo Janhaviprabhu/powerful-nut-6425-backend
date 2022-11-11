@@ -89,7 +89,7 @@ app.post("/addTask", (req, res)=>{
     res.send(data)
 })
 
-app.patch("/entry", (req, res)=>{
+app.post("/entry", (req, res)=>{
     let input = req.body
     let [pass, uname] = input.token.split("@")
     const {id} = input
@@ -100,7 +100,7 @@ app.patch("/entry", (req, res)=>{
     res.send(data)
 })
 
-app.patch("/task", (req, res)=>{
+app.post("/task", (req, res)=>{
     let input = req.body
     let [pass, uname] = input.token.split("@")
     const {taskId, entryId} = input
@@ -133,7 +133,7 @@ app.post("/deleteTask", (req, res)=>{
     fs.writeFile("./db.json", JSON.stringify(db), ()=>{})
     res.status(200).send(data)
 
-    
+
 })
 
 app.listen(PORT, ()=>{
