@@ -21,10 +21,10 @@ app.post("/login", (req, res)=>{
         if(data.password==input.password){
             res.status(200).send({token:`${input.password}@${input.username}`})
         }else {
-        res.status(401).send({error:"Wrong password"})
+        res.send({error:"Wrong password"})
         }
     } else {
-        res.status(401).send({error:"User Not Found"})
+        res.send({error:"User Not Found"})
     }
 })
 
@@ -34,11 +34,11 @@ app.post("/signup", (req, res)=>{
     let data = db.people.find(ele=>ele.email==email)
 
     if(data){
-        res.status(401).send({error:"Email already registered with us"})
+        res.send({error:"Email already registered with us"})
     } else {
         let dat1 = db.people.find(ele=>ele.username==username)
         if(dat1){
-           res.status(401).send({error:"Please select a different username"}) 
+           res.send({error:"Please select a different username"}) 
         } else {
             if(password.length>=8){
                 let obj = {
@@ -53,7 +53,7 @@ app.post("/signup", (req, res)=>{
                 fs.writeFile("./db.json", JSON.stringify(db), ()=>{})
                 res.status(200).send({error:"false"})
             } else {
-                res.status(401).send({error:"Password must have 8 characters"})
+                res.send({error:"Password must have 8 characters"})
             }
         }
     }
