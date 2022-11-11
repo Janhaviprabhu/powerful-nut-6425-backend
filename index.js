@@ -132,6 +132,8 @@ app.post("/deleteTask", (req, res)=>{
     entry.tasks = entry.tasks.filter(ele=>ele.id!=taskId)
     fs.writeFile("./db.json", JSON.stringify(db), ()=>{})
     res.status(200).send(data)
+
+    
 })
 
 app.listen(PORT, ()=>{
