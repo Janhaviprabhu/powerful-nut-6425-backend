@@ -112,7 +112,7 @@ app.patch("/task", (req, res)=>{
     res.send(data)
 })
 
-app.delete("/deleteEntry", (req, res)=>{
+app.post("/deleteEntry", (req, res)=>{
     let input = req.body
     let [pass, uname] = input.token.split("@")
     const {id} = input
@@ -122,7 +122,7 @@ app.delete("/deleteEntry", (req, res)=>{
     res.status(200).send(data)
 })
 
-app.delete("/deleteTask", (req, res)=>{
+app.post("/deleteTask", (req, res)=>{
 
     let input = req.body
     let [pass, uname] = input.token.split("@")
