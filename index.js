@@ -86,7 +86,7 @@ app.post("/addTask", (req, res)=>{
     let entry = data.entries.find(ele=>ele.id==id)
     entry.tasks.push({id:taskId, title, isCompleted:false, tags, projectName, desc, dueDate})
     fs.writeFile("./db.json", JSON.stringify(db), ()=>{})
-    res.send(entry)
+    res.send(data)
 })
 
 app.patch("/entry", (req, res)=>{
